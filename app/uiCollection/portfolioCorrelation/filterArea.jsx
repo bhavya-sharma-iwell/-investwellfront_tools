@@ -17,6 +17,9 @@ function FilterArea(props) {
                     setShowMenu={props.setShowMenu}
                     showMenu={props.showMenu}
                     setSchemeOption={props.setSchemeOption}
+                    goClicked={props.goClicked}
+                    setGoClicked={props.setGoClicked}
+
                 />
             </div>
             <div className='selectionArea'>
@@ -32,12 +35,14 @@ function FilterArea(props) {
                     setShowMenu={props.setShowMenu}
                     showMenu={props.showMenu}
                     setSchemeOption={props.setSchemeOption}
+                    goClicked={props.goClicked}
+                    setGoClicked={props.setGoClicked}
                 />
                 {props.error && props.error['noScheme'] != undefined && <div className='errorMsg'>{props.error['noScheme']}</div>}
                 {props.error && props.error['schemeAlready'] != undefined && <div className='errorMsg'>{props.error['schemeAlready']}</div>}
             </div>
             <div className='selectionArea' >
-                <input type='button' onClick={() => { props.drillDownData(props.scheme) }} className='goButton' value='GO' />
+                <input type='button' onClick={() => { props.drillDownData(props.scheme); props.setGoClicked(true)}} className='goButton' value='GO' />
             </div>
             <div className='schemeList'>
                 {props.schemeArr.length > 0 &&
@@ -73,6 +78,8 @@ function FilterArea(props) {
                     setSelected={props.setTimePeriod}
                     setShowMenu={props.setShowMenu}
                     showMenu={props.showMenu}
+                    goClicked={props.goClicked}
+                    setGoClicked={props.setGoClicked}
                 />
                 {props.error && props.error['timePeriod'] != undefined && <div className='errorMsg'>{props.error['timePeriod']}</div>}
             </div>

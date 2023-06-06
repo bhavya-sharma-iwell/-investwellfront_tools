@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react'
 import RightMain from './rightMain.jsx'
-import { categoryOption, timePeriodOption } from '../../constants/portfolioCorrelation.js'
+import { categoryOption, timePeriodOption } from '../constants/index.js'
 import axios from 'axios'
-import '../../media/css/portfolioCorrelation.css'
+import '../../portfolioCorrelation/media/css/loader.css'
+
 
 export default function Index() {
 
@@ -16,6 +17,7 @@ export default function Index() {
   const [navData, setNavData] = useState()
   const [showMenu, setShowMenu] = useState('')
   const [error, setError] = useState({})
+  const [goClicked, setGoClicked] = useState(false)
 
   const clearData = (field, data) => {
     switch (field) {
@@ -70,6 +72,7 @@ export default function Index() {
               setSchemeArray(updatedSchemeArray)
               setCount(count + 1)
               setShowMatrix(false)
+              // setScheme([])
             }
           }
         })
@@ -136,10 +139,10 @@ export default function Index() {
   }, [category])
 
   return (
-    <div className='mainBox'>
-      <div className='navHeader'></div>
-      <div className='logo'></div>
-      <div className={showMatrix ? 'sideNavWithMatrix' : 'sideNav'}></div>
+    <div id = "portfolioCorrelation">
+      {/* <div className='navHeader'></div> */}
+      {/* <div className='logo'></div> */}
+      {/* <div className={showMatrix ? 'sideNavWithMatrix' : 'sideNav'}></div> */}
       <RightMain
         category={category}
         setSchemeOption={setSchemeOption}
@@ -163,6 +166,8 @@ export default function Index() {
         showMenu={showMenu}
         setShowMenu={setShowMenu}
         error={error}
+        goClicked={goClicked}
+        setGoClicked={setGoClicked}
       />
     </div>
 
