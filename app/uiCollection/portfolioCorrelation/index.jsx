@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
 import RightMain from './rightMain.jsx'
-import { categoryOption, timePeriodOption } from '../constants/index.js'
+import { categoryOption, timePeriodOption } from '../../constants/portfolioCorrelation.js'
 import axios from 'axios'
-import '../../portfolioCorrelation/media/css/loader.css'
+import '../../media/css/portfolioCorrelation.css'
 
 
 export default function Index() {
