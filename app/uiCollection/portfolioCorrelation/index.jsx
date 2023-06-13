@@ -49,7 +49,7 @@ export default function Index() {
     }
     else {
       setError({})
-      axios.get("http://localhost:3000/portfolioCorrelation/getLaunchDate", {
+      axios.get("api/portfolioCorrelation/getLaunchDate", {
         params: {
           schid: obj.schid
         }
@@ -98,7 +98,7 @@ export default function Index() {
     schemeArr.map((object) => (
       data.push(object.schid)
     ))
-    axios.get("http://localhost:3000/portfolioCorrelation/getNavs", {
+    axios.get("api/portfolioCorrelation/getNavs", {
       params: {
         schid: { 'arr': data },
         timePeriod: timePeriod && timePeriod.value
@@ -122,7 +122,7 @@ export default function Index() {
   }
   useEffect(() => {
     if (category != null) {
-      axios.get("http://localhost:3000/portfolioCorrelation/getSchemes", {
+      axios.get("api/portfolioCorrelation/getSchemes", {
         params: {
           category: category && category.value
         }

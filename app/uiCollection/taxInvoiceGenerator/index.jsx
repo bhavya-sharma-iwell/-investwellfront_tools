@@ -217,7 +217,7 @@ export default function Index() {
         dataString = dataString.replaceAll("&", "ampersandSymbol")
         dataString = dataString.replaceAll("%", "percentageSymbol")
         dataString = dataString.replaceAll("+", "plusSymbol")
-        window.open(`http://localhost:3000/invoiceGenerator/downloadInvoice?data=${dataString}`)
+        window.open(`api/invoiceGenerator/downloadInvoice?data=${dataString}`)
     }
   
     return (

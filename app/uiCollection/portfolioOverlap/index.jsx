@@ -22,7 +22,7 @@ export default function Index() {
     const name = event.target.value
     debounceTimer = setTimeout(() => {
       axios
-        .get(`http://localhost:3000/portfolioOverlap/getSchemes`, { params: { schemeName: name } })
+        .get(`api/portfolioOverlap/getSchemes`, { params: { schemeName: name } })
         .then((res) => {
           if (res.data && res.data.status == 0) {
             setMutualFunds(res.data.result);
@@ -44,7 +44,7 @@ export default function Index() {
 
   const handleSubmit = () => {
     setLoading(true);
-    axios.get(`http://localhost:3000/portfolioOverlap/getPortfolioOverlap`, { params: { schid1: schemeA.id, schid2: schemeB.id } })
+    axios.get(`api/portfolioOverlap/getPortfolioOverlap`, { params: { schid1: schemeA.id, schid2: schemeB.id } })
       .then(res => {
         if (res.data && res.data.status == 0) {
           setHoldingsDetails({ holding: res.data.result.holding, vennDiagram: res.data.result.vennDiagram, overlapValue: res.data.result.overlapValue, schemeAName: schemeA.scheme, schemeBName: schemeB.scheme })
