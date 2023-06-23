@@ -66,7 +66,7 @@ $button-color: #5275E9;
 
       .selectionArea {
         display: inline-block;
-        margin: 0 30px 10px 5px;
+        margin: 0 30px 0px 5px;
 
         .labels {
           display: block;
@@ -188,9 +188,11 @@ $button-color: #5275E9;
         .dropdownContainer {
           width: 130px;
           margin: 6px 0 0 0;
+          height: 35px;
           display: flex;
           align-items: center;
           justify-content: first baseline;
+          background-color: white;
         }
 
         .dropdownMenu {
@@ -293,19 +295,24 @@ $button-color: #5275E9;
   .errorMsg{
     position: absolute;
     color: red;
+    background-color: yellow;
+
 }
   .dropdownContainer {
     text-align: left;
+    // margin: 2px 0 0 0;
     border: 1px solid #ccc;
     position: relative;
     border-radius: 5px;
     width: 400px;
+    height: 35px;
     padding: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: large;
     font-weight: 500;
+    background-color: white;
     .close {
       position: absolute;
       right: 8px;
