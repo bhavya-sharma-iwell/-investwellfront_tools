@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import axios from 'axios'
 import FilterArea from './filterArea.jsx'
 import StocksTable from './stocksTable.jsx'
@@ -8,14 +8,22 @@ import '../../media/css/portfolioOverlap.css';
 export default function Index() {
   const [loading, setLoading] = useState(false)
   const [holdingsDetails, setHoldingsDetails] = useState()
-  const [dropdownA, setDropdownA] = useState(true)
-  const [dropdownB, setDropdownB] = useState(true)
-  const [schemeA, setSchemeA] = useState({})
-  const [schemeB, setSchemeB] = useState({})
+  const [dropdownA, setDropdownA] = useState(false)
+  const [dropdownB, setDropdownB] = useState(false)
+  const [schemeA, setSchemeA] = useState({ scheme: 'Kotak Bluechip Fund (G)', id: 1034 })
+  const [schemeB, setSchemeB] = useState({ scheme: 'Franklin India Bluechip Fund (G)', id: 399 })
   const [mutualFunds, setMutualFunds] = useState('')
   const [sortTable, setSortTable] = useState({ name: "", direction: true })
   const [debounce, setDebounce] = useState()
 
+  useEffect(() => {
+    axios.get(`api/portfolioOverlap/getPortfolioOverlap`, { params: { schid1: schemeA.id, schid2: schemeB.id } })
+    .then(res => {
+      if (res.data && res.data.status == 0) {
+        setHoldingsDetails({ holding: res.data.result.holding, vennDiagram: res.data.result.vennDiagram, overlapValue: res.data.result.overlapValue, schemeAName: schemeA.scheme, schemeBName: schemeB.scheme })
+      }
+    })
+  }, []);
   const handleInputChange = (event, label) => {
     let debounceTimer = debounce
     clearTimeout(debounceTimer)
