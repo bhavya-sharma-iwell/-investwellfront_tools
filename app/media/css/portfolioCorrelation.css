@@ -242,7 +242,9 @@
 #portfolioCorrelation .errorMsg {
   position: absolute;
   color: red;
-  background-color: yellow; }
+  font-size: 15px; }
+#portfolioCorrelation #schemeError {
+  padding: 0 30% 0 38%; }
 #portfolioCorrelation .dropdownContainer {
   text-align: left;
   border: 1px solid #ccc;

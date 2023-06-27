@@ -30,6 +30,8 @@ export default function Index() {
           setCount(count - 1)
           setShowMatrix(false)
         }
+        if(schemeArr.length == 0)
+        setCount(1)
         break
       case 'clearAll':
         setCount(1)
@@ -39,9 +41,15 @@ export default function Index() {
       default:
     }
   }
+  useEffect(() => {
+      const timeoutId = setTimeout(() => {
+        setError({});
+      }, 5000);
+      return () => clearTimeout(timeoutId);
+  }, [error]);
   const drillDownData = (obj) => {
     if (obj == '') {
-      setError({'noScheme':'Please select scheme!'})
+      setInterval(setError({'noScheme':'Please select scheme!'}),1000)
     }
     else if (schemeArr.some(obj => obj.schid == scheme.schid)) {
       setError({'schemeAlready':'Scheme already exist'})
@@ -72,12 +80,11 @@ export default function Index() {
               setSchemeArray(updatedSchemeArray)
               setCount(count + 1)
               setShowMatrix(false)
-              // setScheme([])
             }
           }
         })
         .catch(error => {
-          console.log("error", error)
+          setShowMatrix(false)
         })
     }
   }
@@ -115,23 +122,12 @@ export default function Index() {
         }
       })
       .catch(error => {
-        console.log("error", error)
+        setShowMatrix(false)
       })
     }
   }
 
   useEffect(() => {
-    if (timePeriod == null || (timePeriod && timePeriod.value < 3)) {
-      setError({'timePeriod':'Please select time period!'})
-    }
-    else if (schemeArr && schemeArr.length <= 1) {
-      setError({'2Schemes':'Please select atleast two schemes'})
-    }
-    else if (schemeArr.length > 15) {
-      setError({'15schemes':'Only 15 schemes can be selected!!'})
-    }
-    else{
-    setError({})
     let data = []
     schemeArr.map((object) => (
       data.push(object.schid)
@@ -149,15 +145,13 @@ export default function Index() {
         }
         else {
           setShowMatrix(true)
-          let responseData = response.data.result
-          setNavData(responseData)
+          setNavData(response.data.result)
         }
       })
       .catch(error => {
-        console.log("error", error)
+        setShowMatrix(false)
       })
-    }
-  },[timePeriod])
+  },[])
   useEffect(() => {
     if (category != null) {
       axios.get("api/portfolioCorrelation/getSchemes", {
@@ -171,16 +165,13 @@ export default function Index() {
 
         })
         .catch(error => {
-          console.log("error", error)
+          setShowMatrix(false)
         })
     }
   }, [category])
 
   return (
     <div id = "portfolioCorrelation">
-      {/* <div className='navHeader'></div> */}
-      {/* <div className='logo'></div> */}
-      {/* <div className={showMatrix ? 'sideNavWithMatrix' : 'sideNav'}></div> */}
       <RightMain
         category={category}
         setSchemeOption={setSchemeOption}

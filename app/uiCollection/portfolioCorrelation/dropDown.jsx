@@ -20,18 +20,9 @@ const Dropdown = (props) => {
 
   return (
     <>
-      {props.isSearchable && (
-        < >
-          <input
-            type="search"
-            className="dropdownContainer"
+      {props.isSearchable ? (
+          <input type="search" className="dropdownContainer"
             onClick={() => {
-              props.setShowMenu(props.label);
-              setCurrentMenu(props.option);
-              setMenu(true);
-              setMenu(!menu)
-            }}
-            onFocus={() => {
               props.setShowMenu(props.label);
               setCurrentMenu(props.option);
               setMenu(true);
@@ -47,20 +38,11 @@ const Dropdown = (props) => {
             }}
             placeholder="Search"
             value={(props.label == "scheme" && props.goClicked)?'':value}
-          ></input>
-        </>
-      )}
-      {!props.isSearchable && props.label != 'scheme' && (
-        <>
-        <div
+          />
+      )
+      :(<div
             className="dropdownContainer"
             onClick={() => {props &&
-              props.setShowMenu(props.label);
-              setCurrentMenu(props.option);
-              setMenu(true);
-              setMenu(!menu)
-            }}
-            onFocus={() => {props &&
               props.setShowMenu(props.label);
               setCurrentMenu(props.option);
               setMenu(true);
@@ -69,7 +51,6 @@ const Dropdown = (props) => {
             >
             {(props.selected)?props.selected.name:'Select'}
             </div>
-        </>
       )}
       {menu && props.showMenu == props.label && (
         <div className="dropdownMenu">

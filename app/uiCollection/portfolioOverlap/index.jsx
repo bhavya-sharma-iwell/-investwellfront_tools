@@ -4,14 +4,15 @@ import FilterArea from './filterArea.jsx'
 import StocksTable from './stocksTable.jsx'
 import PortfolioOverlap from './portfolioOverlap.jsx'
 import '../../media/css/portfolioOverlap.css';
+import { defaultSchemes } from '../../constants/portfolioOverlap.js'
 
 export default function Index() {
   const [loading, setLoading] = useState(false)
   const [holdingsDetails, setHoldingsDetails] = useState()
   const [dropdownA, setDropdownA] = useState(false)
   const [dropdownB, setDropdownB] = useState(false)
-  const [schemeA, setSchemeA] = useState({ scheme: 'Kotak Bluechip Fund (G)', id: 1034 })
-  const [schemeB, setSchemeB] = useState({ scheme: 'Franklin India Bluechip Fund (G)', id: 399 })
+  const [schemeA, setSchemeA] = useState(defaultSchemes[0])
+  const [schemeB, setSchemeB] = useState(defaultSchemes[1])
   const [mutualFunds, setMutualFunds] = useState('')
   const [sortTable, setSortTable] = useState({ name: "", direction: true })
   const [debounce, setDebounce] = useState()
