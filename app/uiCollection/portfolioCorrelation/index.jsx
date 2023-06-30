@@ -9,7 +9,7 @@ export default function Index() {
 
   const [schemeOption, setSchemeOption] = useState()
   const [category, setCategory] = useState(categoryOption[0])
-  const [timePeriod, setTimePeriod] = useState(timePeriodOption[0])
+  const [timePeriod, setTimePeriod] = useState(timePeriodOption[1])
   const [scheme, setScheme] = useState([])
   const [count, setCount] = useState(defaultSchemes.length + 1)
   const [schemeArr, setSchemeArray] = useState(defaultSchemes)
@@ -89,28 +89,25 @@ export default function Index() {
     }
   }
   const matrixData = () => {
-    if (timePeriod == null || (timePeriod && timePeriod.value < 3)) {
+    if (!timePeriod) {
       setError({'timePeriod':'Please select time period!'})
     }
-    else if (schemeArr && schemeArr.length <= 1) {
-      setError({'2Schemes':'Please select atleast two schemes'})
+    else if (schemeArr && schemeArr.length  < 2) {
+      setError({'twoSchemes':'Please select atleast two schemes'})
     }
     else if (schemeArr.length > 15) {
-      setError({'15schemes':'Only 15 schemes can be selected!!'})
+      setError({'fifteenSchemes':'Only 15 schemes can be selected!!'})
     }
     else{
     setError({})
-    let data = []
-    schemeArr.map((object) => (
-      data.push(object.schid)
-    ))
+    let data = schemeArr.map(obj => obj.schid)
     axios.get("api/portfolioCorrelation/getNavs", {
       params: {
         schid: { 'arr': data },
         timePeriod: timePeriod && timePeriod.value
       }
     })
-      .then((response) => {
+      .then(response => {
         if (response.data.status == -1) {
           setError(response.data.result)
 
@@ -128,17 +125,14 @@ export default function Index() {
   }
 
   useEffect(() => {
-    let data = []
-    schemeArr.map((object) => (
-      data.push(object.schid)
-    ))
+    let data = schemeArr.map(obj => obj.schid)
     axios.get("api/portfolioCorrelation/getNavs", {
       params: {
         schid: { 'arr': data },
         timePeriod: timePeriod && timePeriod.value
       }
     })
-      .then((response) => {
+      .then(response => {
         if (response.data.status == -1) {
           setError(response.data.result)
 
@@ -153,13 +147,13 @@ export default function Index() {
       })
   },[])
   useEffect(() => {
-    if (category != null) {
+    if (category) {
       axios.get("api/portfolioCorrelation/getSchemes", {
         params: {
           category: category && category.value
         }
       })
-        .then((response) => {
+        .then(response => {
           response.data && response.data.status == 0 &&
             setSchemeOption(response.data.result)
 

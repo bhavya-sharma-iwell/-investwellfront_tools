@@ -9,7 +9,6 @@ function FilterArea(props) {
                 <DropDown
                     label='category'
                     placeHolder='Select'
-                    
                     option={props.categoryOption}
                     selected={props.category}
                     setSelected={props.setCategory}
@@ -38,8 +37,8 @@ function FilterArea(props) {
                     goClicked={props.goClicked}
                     setGoClicked={props.setGoClicked}
                 />
-                {props.error && props.error['noScheme'] != undefined && <div className='errorMsg'>{props.error['noScheme']}</div>}
-                {props.error && props.error['schemeAlready'] != undefined && <div className='errorMsg'>{props.error['schemeAlready']}</div>}
+                {props.error && props.error['noScheme'] && <div className='errorMsg'>{props.error['noScheme']}</div>}
+                {props.error && props.error['schemeAlready'] && <div className='errorMsg'>{props.error['schemeAlready']}</div>}
             </div>
             <div className='selectionArea' >
                 <input type='button' onClick={() => { props.drillDownData(props.scheme); props.setGoClicked(true)}} className='goButton' value='GO' />
@@ -80,9 +79,9 @@ function FilterArea(props) {
                     goClicked={props.goClicked}
                     setGoClicked={props.setGoClicked}
                 />
-                {props.error && props.error['timePeriod'] != undefined && <div className='errorMsg'>{props.error['timePeriod']}</div>}
+                {props.error && props.error['timePeriod'] && <div className='errorMsg'>{props.error['timePeriod']}</div>}
             </div>
-            {props.error && props.error['2Schemes'] != undefined ? <div className='errorMsg' id='schemeError'>{props.error['2Schemes']}</div> : props.error && props.error['15schemes'] != undefined ? <div className='errorMsg' id='schemeError'>{props.error['15schemes']}</div> : ''}
+            {props.error && props.error['twoSchemes']? <div className='errorMsg' id='schemeError'>{props.error['twoSchemes']}</div> : props.error && props.error['fifteenSchemes']? <div className='errorMsg' id='schemeError'>{props.error['fifteenSchemes']}</div> : ''}
             <button className='applyButton' onClick={() => props.matrixData(props.timePeriod && props.timePeriod.value)}>Apply</button>
         </div>
     )

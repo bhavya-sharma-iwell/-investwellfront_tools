@@ -25,15 +25,13 @@ const Dropdown = (props) => {
             onClick={() => {
               props.setShowMenu(props.label);
               setCurrentMenu(props.option);
-              setMenu(true);
               setMenu(!menu)
             }}
-            onChange={(event) => {
+            onChange={event => {
               props.setShowMenu(props.label);
               setCurrentMenu(props.option);
               handleChangeSchemeOption(event);
               setValue(event.target.value)
-              setMenu(true);
               props.label == "scheme" && props.setGoClicked(false)
             }}
             placeholder="Search"
@@ -45,7 +43,6 @@ const Dropdown = (props) => {
             onClick={() => {props &&
               props.setShowMenu(props.label);
               setCurrentMenu(props.option);
-              setMenu(true);
               setMenu(!menu)
             }}
             >
