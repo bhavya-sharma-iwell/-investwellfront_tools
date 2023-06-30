@@ -81,7 +81,7 @@ function FilterArea(props) {
                 />
                 {props.error && props.error['timePeriod'] && <div className='errorMsg'>{props.error['timePeriod']}</div>}
             </div>
-            {props.error && props.error['twoSchemes']? <div className='errorMsg' id='schemeError'>{props.error['twoSchemes']}</div> : props.error && props.error['fifteenSchemes']? <div className='errorMsg' id='schemeError'>{props.error['fifteenSchemes']}</div> : ''}
+            {props.error && props.error['twoSchemes']? <div className='errorMsg schemeError'>{props.error['twoSchemes']}</div> : props.error && props.error['fifteenSchemes']? <div className='errorMsg schemeError'>{props.error['fifteenSchemes']}</div> : ''}
             <button className='applyButton' onClick={() => props.matrixData(props.timePeriod && props.timePeriod.value)}>Apply</button>
         </div>
     )

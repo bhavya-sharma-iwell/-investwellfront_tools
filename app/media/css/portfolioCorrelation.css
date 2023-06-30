@@ -4,7 +4,7 @@
   border: 1px solid #ede8ea;
   display: inline-block;
   position: absolute;
-  background-color: white; }
+  background-color: #fff; }
 #portfolioCorrelation .navHeader {
   display: inline-block;
   height: 8%;
@@ -155,11 +155,10 @@
       #portfolioCorrelation .rightMainWithMatrix .contentArea .timePeriodBox .dropdownContainer {
         width: 250px;
         margin: 6px 0 0 0;
-        height: 35px;
         display: flex;
         align-items: center;
         justify-content: first baseline;
-        background-color: white; }
+        background-color: #fff; }
       #portfolioCorrelation .rightMain .contentArea .timePeriodBox .dropdownMenu,
       #portfolioCorrelation .rightMainWithMatrix .contentArea .timePeriodBox .dropdownMenu {
         width: 250px; }
@@ -243,7 +242,7 @@
   position: absolute;
   color: red;
   font-size: 15px; }
-#portfolioCorrelation #schemeError {
+#portfolioCorrelation .schemeError {
   padding: 0 30% 0 38%; }
 #portfolioCorrelation .dropdownContainer {
   text-align: left;
@@ -251,14 +250,13 @@
   position: relative;
   border-radius: 5px;
   width: 400px;
-  height: 35px;
   padding: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: large;
   font-weight: 500;
-  background-color: white; }
+  background-color: #fff; }
   #portfolioCorrelation .dropdownContainer .close {
     position: absolute;
     right: 8px;
