@@ -165,6 +165,8 @@ export default function Index() {
   }, [category])
 
   return (
+  <>
+    <title>Portfolio Correlation</title>
     <div id = "portfolioCorrelation">
       <RightMain
         category={category}
@@ -193,6 +195,6 @@ export default function Index() {
         setGoClicked={setGoClicked}
       />
     </div>
-
+    </>
   )
 }

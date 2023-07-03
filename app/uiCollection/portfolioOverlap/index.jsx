@@ -82,7 +82,7 @@ export default function Index() {
     <Fragment>
       <title>Portfolio Overlap</title>
       <div className='outerContainer '>
-        <h3 className='info'> Diversity the holding across different categories of fund investing in different asset classes after comparing the portfolio of various fund houses
+        <h3 className='info'> Diversify the holding across different categories of fund investing in different asset classes after comparing the portfolio of various fund houses
           to avoid portfolio overlap</h3>
         <div className='filterArea'>
           <FilterArea
