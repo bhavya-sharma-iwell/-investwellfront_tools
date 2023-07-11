@@ -101,7 +101,7 @@ export default function Index() {
     else{
     setError({})
     let data = schemeArr.map(obj => obj.schid)
-    axios.get("api/portfolioCorrelation/getNavs", {
+    axios.get("api/portfolioCorrelation/createCorrelationMatrix", {
       params: {
         schid: { 'arr': data },
         timePeriod: timePeriod && timePeriod.value
@@ -126,7 +126,7 @@ export default function Index() {
 
   useEffect(() => {
     let data = schemeArr.map(obj => obj.schid)
-    axios.get("api/portfolioCorrelation/getNavs", {
+    axios.get("api/portfolioCorrelation/createCorrelationMatrix", {
       params: {
         schid: { 'arr': data },
         timePeriod: timePeriod && timePeriod.value
